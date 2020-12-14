@@ -1,0 +1,29 @@
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: cluster
+  namespace: mysql-cluster
+spec:
+  serviceName: "cluster"                                # same name as statefulset name  
+  replicas: 3                                         # number of innodb cluster nodes 
+  selector:
+    matchLabels:
+      app: cluster                                      # same name as statefulset name
+  template:
+    metadata:
+      labels:
+        app: cluster                                    # same name as statefulset name
+    spec:
+      serviceAccountName: mysql-operator              # do not modify
+      containers:
+      - name: mysql                                   # do not change the container name  
+        image: mysql/enterprise-server:8.0.19            # check your mysql image (must be 8.16 or above)
+        env:
+         - name: MYSQL_ROOT_PASSWORD                  # choose database root password
+           valueFrom:
+             secretKeyRef:
+                name: mysql-root-password
+                key: password
+      - name: agent
+        image: triplea-operator:1.0                    # check your mysql/a3-operator image name
