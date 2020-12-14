@@ -1,0 +1,28 @@
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: mysqlbackup
+  namespace: mysql-cluster
+spec:
+   template:
+        spec:
+          serviceAccountName: mysql-operator              # do not modify
+          containers:
+          - name: agent
+            image: triplea-operator:1.0 
+            env:
+            - name: SYS_CONFIG                          # do not modify
+              value: backup
+            - name: DB_NODE                             # database server 
+              value: "mysql-0"
+            - name: BACKUP_TYPE                         # full, incremental, differential 
+              value: "full"
+            - name: BACKUP_USER                   # mysql user 
+              value: "root"
+            - name: BACKUP_PASSWORD               # mysql user password
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-root-password
+                  key: password
+          restartPolicy: Never
