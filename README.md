@@ -10,5 +10,6 @@ Triplea-Operator is used to automate the deployment and life cycle of InnoDB Clu
 8. Support online full backup, incremental backup and differential backup
 </br> 
 Triplea-operator is not really a Kubernetes Operator </br>
-Simple architecture, easy to deploy, and with minimum dependency
-![Image of picture3](https://github.com/tripplea-sg/innodb-cluster-operator/blob/main/Triplea-architecture.png)
+Simple architecture, easy to deploy, and with minimum dependency </br>
+
+![Image of Yaktocat](https://github.com/tripplea-sg/innodb-cluster-operator/blob/main/Triplea-architecture.png)
