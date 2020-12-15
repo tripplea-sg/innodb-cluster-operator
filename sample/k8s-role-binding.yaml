@@ -8,5 +8,5 @@ subjects:
     name: mysql-operator 
 roleRef:
   kind: Role
-  name: admin
+  name: modify-pods
   apiGroup: rbac.authorization.k8s.io
