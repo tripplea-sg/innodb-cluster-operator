@@ -1,22 +1,22 @@
 # Samples
-## On Kubernetes
-### Namespace:
+## A. On Kubernetes
+### A.1. Namespace:
 ```
 kubectl create ns mysql-cluster
 ```
-### Service account:
+### A.2. Service account:
 ```
 kubectl apply -f k8s-service-account.yaml
 ```
-### Roles:
+### A.3. Roles:
 ```
 kubectl apply -f k8s-role.yaml
 ```
-### Role Bindings:
+### A.4. Role Bindings:
 ```
 kubectl apply -f k8s-role-binding.yaml
 ```
-### Deploy InnoDB Cluster with No-PV-PVC using Triplea-operator
+### A.5. Deploy InnoDB Cluster with No-PV-PVC using Triplea-operator
 ```
 kubectl apply -f k8s-mysql-no-disk.yaml
 ```
@@ -24,48 +24,48 @@ kubectl apply -f k8s-mysql-no-disk.yaml
 ```
 kubectl apply -f k8s-mysql-with-disk.yaml
 ```
-### Check innoDB Cluster
+### A.6. Check innoDB Cluster
 ```
 kubectl -n mysql-cluster exec -it mysql-0 -- mysqlsh root:root@localhost:3306 -- cluster status
 ```
-### Backup mysql-0
+### A.7. Backup mysql-0
 ```
 kubectl apply -f k8s-mysql-backup.yaml
 ```
-## Openshift
-### Create Project / Namespace
+## B. On Openshift
+### B.1. Create Project / Namespace
 ```
 oc create ns db-mysql-dev
 ```
-### Service Account
+### B.2. Service Account
 Login as kubeadmin
 ```
 oc apply -f oc-service-account.yaml
 ```
-### Roles
+### B.3. Roles
 Login as kubeadmin
 ```
 oc apply -f oc-role.yaml
 ```
-### Role Binding
+### B.4. Role Binding
 Login as kubeadmin
 ```
 oc apply -f oc-role-binding.yaml
 ```
-### Deploy Template
+### B.5. Deploy Template
 Login as system:admin and set project as 'db-mysql-dev', then run the following:
 ```
 oc apply -f oc-mysql-template.yaml
 ```
-### Deploy InnoDB Cluster with PV and PVC using Template
+### B.6. Deploy InnoDB Cluster with PV and PVC using Template
 ```
 oc process -n db-mysql-dev mysql-generic -p namespace=db-mysql-dev -p imageName=172.30.1.1:5000/db-mysql-dev/mysql-enterprise:latest -p statefulsetname=mysql -p replicas=3 -p secretpassword=mysql-root-password | oc create -f -
 ```
-### Check Cluster
+### B.7. Check Cluster
 ```
 oc exec -it mysql-0 -- mysqlsh root:root@localhost:3306 -- cluster status
 ```
-### Backup mysql-0
+### B.8. Backup mysql-0
 ```
 oc apply -f oc-mysql-backup.yaml
 ```
