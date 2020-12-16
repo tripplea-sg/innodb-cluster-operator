@@ -1,4 +1,4 @@
-# Samples
+# Sample Commands
 ## A. On Kubernetes
 ### A.1. Namespace:
 ```
@@ -31,6 +31,10 @@ kubectl -n mysql-cluster exec -it mysql-0 -- mysqlsh root:root@localhost:3306 --
 ### A.7. Backup mysql-0
 ```
 kubectl apply -f k8s-mysql-backup.yaml
+```
+### A.8. Check Triplea-operator agent's log
+```
+kubectl -n mysql-cluster logs mysql-0 -c agent
 ```
 ## B. On Openshift
 ### B.1. Create Project / Namespace
@@ -68,4 +72,8 @@ oc exec -it mysql-0 -- mysqlsh root:root@localhost:3306 -- cluster status
 ### B.8. Backup mysql-0
 ```
 oc apply -f oc-mysql-backup.yaml
+```
+### B.9. Check Triplea-operator agent's log
+```
+oc logs mysql-0 -c agent
 ```
