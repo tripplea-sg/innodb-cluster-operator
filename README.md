@@ -1,6 +1,6 @@
 # Triplea-Operator
 Triplea-Operator is used to automate the deployment and life cycle of InnoDB Cluster using MySQL on Kubernetes or Openshift or OKE </br>
-1. Available on Public Docker Repository
+1. Available on Public Docker Registry
 2. Simple concept, easy to setup
 3. Portable, able to run on Kubernetes / Openshift / OKE
 4. It’s a sidecar container that monitor the state of InnoDB Cluster
