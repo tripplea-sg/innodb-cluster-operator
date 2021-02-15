@@ -10,7 +10,7 @@ spec:
           serviceAccountName: mysql-operator              # do not modify
           containers:
           - name: agent
-            image: triplea-operator:1.0 
+            image: hananto/triplea-operator:latest
             env:
             - name: SYS_CONFIG                          # do not modify
               value: backup
