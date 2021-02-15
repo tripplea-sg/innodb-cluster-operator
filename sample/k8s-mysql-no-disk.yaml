@@ -18,7 +18,7 @@ spec:
       serviceAccountName: mysql-operator              # do not modify
       containers:
       - name: mysql                                   # do not change the container name  
-        image: mysql/enterprise-server:8.0.19            # check your mysql image (must be 8.16 or above)
+        image: mysql/mysql-server:latest              # check your mysql image (must be 8.0.20 or above)
         env:
          - name: MYSQL_ROOT_PASSWORD                  # choose database root password
            valueFrom:
@@ -26,4 +26,4 @@ spec:
                 name: mysql-root-password 
                 key: password
       - name: agent
-        image: triplea-operator:1.0                   # check your mysql/a3-operator image name
+        image: hananto/triplea-operator:latest        # check your mysql/a3-operator image name
