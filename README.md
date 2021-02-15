@@ -5,7 +5,7 @@ Triplea-Operator is used to automate the deployment and life cycle of InnoDB Clu
 3. Portable, able to run on Kubernetes / Openshift / OKE
 4. It’s a sidecar container that monitor the state of InnoDB Cluster
 5. Automatic configuration of InnoDB Cluster on Containers
-6. Automatic cluster membership management 
+6. Automatic cluster membership alignment with the Statefulset's replica
 7. Automatic adding or removing members 
 8. Network partition or pod’s failure handling
 9. Reboot cluster from complete outage handling
