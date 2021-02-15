@@ -18,7 +18,7 @@ spec:
       serviceAccountName: mysql-operator              # do not modify
       containers:
       - name: mysql                                   # do not change the container name  
-        image: mysql/enterprise-server:8.0.18            # check your mysql image (must be 8.16 or above)
+        image: mysql/mysql-server:latest            # check your mysql image (must be 8.0.20 or above)
         env:
          - name: MYSQL_ROOT_PASSWORD                  # choose database root password
            valueFrom:
@@ -31,7 +31,7 @@ spec:
         - name: backup-vol
           mountPath: /backup 
       - name: agent
-        image: triplea-operator:1.0                    # check mysql/a3-operator image name
+        image: hananto/triplea-operator:latest         # check mysql/a3-operator image name
   volumeClaimTemplates:                                # persistent volume is optional
   - metadata:
       name: data-vol                                   # do not change the name
